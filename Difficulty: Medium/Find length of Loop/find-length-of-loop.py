@@ -1,0 +1,26 @@
+'''
+class Node:
+    def __init__(self, data): 
+        self.data = data
+        self.next = None
+'''
+
+class Solution:
+    def lengthOfLoop(self, head):
+        slow = head
+        fast = head
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            
+            if slow == fast:
+                slow = slow.next
+                count = 1
+                
+                while slow != fast:
+                    slow = slow.next
+                    count += 1
+                return count
+                
+        return 0
